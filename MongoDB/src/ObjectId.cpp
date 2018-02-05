@@ -31,11 +31,9 @@ ObjectId::ObjectId(const std::string& id)
 {
 	poco_assert_dbg(id.size() == 24);
 
-    const char* p = id.c_str();
-    for (std::size_t i = 0; i < 12; ++i)
-    {
-		_id[i] = fromHex(p);
-		p += 2;
+	for(std::size_t i = 0; i < id.length(); i += 2)
+	{
+		_id[i] = (unsigned char)strtoul(id.substr(i, 2).c_str(), 0, 16);
 	}
 }
 
