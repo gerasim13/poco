@@ -31,9 +31,9 @@ ObjectId::ObjectId(const std::string& id)
 {
 	poco_assert_dbg(id.size() == 24);
 
-	for(std::size_t i = 0; i < id.length(); i += 2)
+	for(std::size_t i = 0, j = 0; i < id.length(); i += 2, j++)
 	{
-		_id[i] = (unsigned char)strtoul(id.substr(i, 2).c_str(), 0, 16);
+		_id[j] = (unsigned char)strtoul(id.substr(i, 2).c_str(), 0, 16);
 	}
 }
 
